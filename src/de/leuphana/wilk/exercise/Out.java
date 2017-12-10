@@ -1,4 +1,4 @@
-package de.leuphana.wilk.uebung;
+package de.leuphana.wilk.exercise;
 
 import java.io.FileOutputStream;
 import java.io.PrintStream;

@@ -1,7 +1,7 @@
-package de.leuphana.wilk.uebung.kapitel07;
+package de.leuphana.wilk.exercise.chapter07;
 
-import de.leuphana.wilk.uebung.In;
-import de.leuphana.wilk.uebung.Out;
+import de.leuphana.wilk.exercise.In;
+import de.leuphana.wilk.exercise.Out;
 
 public class MatrixMultiplication {
 

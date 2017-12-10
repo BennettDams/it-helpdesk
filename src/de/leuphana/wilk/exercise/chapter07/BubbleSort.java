@@ -1,4 +1,4 @@
-package de.leuphana.wilk.uebung.kapitel07;
+package de.leuphana.wilk.exercise.chapter07;
 
 public class BubbleSort {
 
