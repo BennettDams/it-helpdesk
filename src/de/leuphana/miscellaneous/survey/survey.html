@@ -14,25 +14,38 @@
 
 <body>
 
-	<form onchange="changeValues()" action="#">
-		Stunden A:<br>
-		<!-- -->
-		<input id="hours01" type="text" name="firstname" value="0"> <br>
-		<!-- -->
+	<form id="IS02_qst" action="#">
 
+		Hours 01:<br>
+		<!-- -->
+		<input id="IS02_01" type="text"> <br>
+		<!-- -->
+		Hours 02:<br>
+		<!-- -->
+		<input id="IS02_02" type="text"> <br>
+		<!-- -->
+		Hours 03:<br>
+		<!-- -->
+		<input id="IS02_03" type="text"><br>
+		<!-- -->
+		Hours 04:<br>
+		<!-- -->
+		<input id="IS02_04" type="text"> <br>
+		<!-- -->
+		Hours 05:<br>
+		<!-- -->
+		<input id="IS02_05" type="text"> <br>
+		<!-- -->
+		Hours 06:<br>
+		<!-- -->
+		<input id="IS02_06" type="text"> <br>
 
-
-		Stunden B:<br>
-		<!-- -->
-		<input id="hours02" type="text" name="lastname" value="0"> <br>
-		<br>
-		<!-- -->
-		Verfügbare Stunden:<br> <br>
-		<!-- -->
-		<span id="hoursAvailable">200</span> <br>
-		<!-- -->
-		<br> <input type="submit" value="Submit">
 	</form>
+
+	<br>
+	<!-- -->
+	Verfügbare Stunden:
+	<h1 id="hoursAvailable">130</h1>
 
 	<script>
 		document.getElementById("IS02_qst").addEventListener("change",
@@ -41,70 +54,33 @@
 		function changeValues() {
 
 			let hoursAvailable = 130;
-
 			let hoursUsed = 0;
-			let hours01 = 0;
-			let hours02 = 0;
-			let hours03 = 0;
-			let hours04 = 0;
-			let hours05 = 0;
-			let hours06 = 0;
+			let hoursArray = [];
+			let arrayLength = 6;
 
-			// get used hours
-
-			if (document.getElementById('IS02_01').value == "") {
-				hours01 = 0;
-			} else {
-				hours01 = parseInt(document.getElementById('IS02_01').value);
+			// fill array with used hours and set amount used
+			for (var i = 1; i < arrayLength + 1; i++) {
+				let hours = document.getElementById("IS02_0" + i).value;
+				if (hours == "") {
+					hoursArray[i] = 0;
+				} else {
+					hoursArray[i] = parseInt(hours);
+				}
+				hoursUsed += hoursArray[i];
 			}
-
-			if (document.getElementById('IS02_02').value == "") {
-				hours02 = 0;
-			} else {
-				hours02 = parseInt(document.getElementById('IS02_02').value);
-			}
-
-			if (document.getElementById('IS02_03').value == "") {
-				hours03 = 0;
-			} else {
-				hours03 = parseInt(document.getElementById('IS02_03').value);
-			}
-
-			if (document.getElementById('IS02_04').value == "") {
-				hours04 = 0;
-			} else {
-				hours04 = parseInt(document.getElementById('IS02_04').value);
-			}
-
-			if (document.getElementById('IS02_05').value == "") {
-				hours05 = 0;
-			} else {
-				hours05 = parseInt(document.getElementById('IS02_05').value);
-			}
-
-			if (document.getElementById('IS02_06').value == "") {
-				hours06 = 0;
-			} else {
-				hours06 = parseInt(document.getElementById('IS02_06').value);
-			}
-
-			// combine input hours
-
-			hoursUsed = hours01 + hours02 + hours03 + hours04 + hours05
-					+ hours06;
 
 			// set hours available
-
-			hoursAvailable = hoursAvailable - hoursUsed;
-
+			hoursAvailable -= hoursUsed;
 			document.getElementById("hoursAvailable").textContent = hoursAvailable;
 
+			// alert for negative amount hours available
 			if (hoursAvailable < 0) {
 				alert("Bitte weniger Stunden verwenden!");
 			}
 
 		}
 	</script>
+
 
 </body>
 </html>
