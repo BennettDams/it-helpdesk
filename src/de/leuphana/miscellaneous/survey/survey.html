@@ -27,8 +27,7 @@
 		<input id="hours02" type="text" name="lastname" value="0"> <br>
 		<br>
 		<!-- -->
-		Verfügbare Stunden:<br>
-		<br>
+		Verfügbare Stunden:<br> <br>
 		<!-- -->
 		<span id="hoursAvailable">200</span> <br>
 		<!-- -->
@@ -36,24 +35,76 @@
 	</form>
 
 	<script>
+		document.getElementById("IS02_qst").addEventListener("change",
+				changeValues);
+
 		function changeValues() {
-			let hoursAvailable = parseInt(document
-					.getElementById("hoursAvailable").textContent);
+
+			let hoursAvailable = 130;
+
 			let hoursUsed = 0;
 			let hours01 = 0;
 			let hours02 = 0;
+			let hours03 = 0;
+			let hours04 = 0;
+			let hours05 = 0;
+			let hours06 = 0;
 
 			// get used hours
-			hours01 = parseInt(document.getElementById('hours01').value);
-			hours02 = parseInt(document.getElementById('hours02').value);
+
+			if (document.getElementById('IS02_01').value == "") {
+				hours01 = 0;
+			} else {
+				hours01 = parseInt(document.getElementById('IS02_01').value);
+			}
+
+			if (document.getElementById('IS02_02').value == "") {
+				hours02 = 0;
+			} else {
+				hours02 = parseInt(document.getElementById('IS02_02').value);
+			}
+
+			if (document.getElementById('IS02_03').value == "") {
+				hours03 = 0;
+			} else {
+				hours03 = parseInt(document.getElementById('IS02_03').value);
+			}
+
+			if (document.getElementById('IS02_04').value == "") {
+				hours04 = 0;
+			} else {
+				hours04 = parseInt(document.getElementById('IS02_04').value);
+			}
+
+			if (document.getElementById('IS02_05').value == "") {
+				hours05 = 0;
+			} else {
+				hours05 = parseInt(document.getElementById('IS02_05').value);
+			}
+
+			if (document.getElementById('IS02_06').value == "") {
+				hours06 = 0;
+			} else {
+				hours06 = parseInt(document.getElementById('IS02_06').value);
+			}
 
 			// combine input hours
-			hoursUsed = hours01 + hours02;
+
+			hoursUsed = hours01 + hours02 + hours03 + hours04 + hours05
+					+ hours06;
 
 			// set hours available
+
 			hoursAvailable = hoursAvailable - hoursUsed;
+
 			document.getElementById("hoursAvailable").textContent = hoursAvailable;
+
+			if (hoursAvailable < 0) {
+				alert("Bitte weniger Stunden verwenden!");
+			}
+
 		}
 	</script>
+
 </body>
 </html>
