@@ -14,73 +14,46 @@
 
 <body>
 
-	<form id="IS02_qst" action="#">
+	<form onchange="changeValues()" action="#">
+		Stunden A:<br>
+		<!-- -->
+		<input id="hours01" type="text" name="firstname" value="0"> <br>
+		<!-- -->
 
-		Hours 01:<br>
-		<!-- -->
-		<input id="IS02_01" type="text"> <br>
-		<!-- -->
-		Hours 02:<br>
-		<!-- -->
-		<input id="IS02_02" type="text"> <br>
-		<!-- -->
-		Hours 03:<br>
-		<!-- -->
-		<input id="IS02_03" type="text"><br>
-		<!-- -->
-		Hours 04:<br>
-		<!-- -->
-		<input id="IS02_04" type="text"> <br>
-		<!-- -->
-		Hours 05:<br>
-		<!-- -->
-		<input id="IS02_05" type="text"> <br>
-		<!-- -->
-		Hours 06:<br>
-		<!-- -->
-		<input id="IS02_06" type="text"> <br>
 
+
+		Stunden B:<br>
+		<!-- -->
+		<input id="hours02" type="text" name="lastname" value="0"> <br>
+		<br>
+		<!-- -->
+		Verfügbare Stunden:<br>
+		<br>
+		<!-- -->
+		<span id="hoursAvailable">200</span> <br>
+		<!-- -->
+		<br> <input type="submit" value="Submit">
 	</form>
 
-	<br>
-	<!-- -->
-	Verfügbare Stunden:
-	<h1 id="hoursAvailable">130</h1>
-
 	<script>
-		document.getElementById("IS02_qst").addEventListener("change",
-				changeValues);
-
 		function changeValues() {
-
-			let hoursAvailable = 130;
+			let hoursAvailable = parseInt(document
+					.getElementById("hoursAvailable").textContent);
 			let hoursUsed = 0;
-			let hoursArray = [];
-			let arrayLength = 6;
+			let hours01 = 0;
+			let hours02 = 0;
 
-			// fill array with used hours and set amount used
-			for (var i = 1; i < arrayLength + 1; i++) {
-				let hours = document.getElementById("IS02_0" + i).value;
-				if (hours == "") {
-					hoursArray[i] = 0;
-				} else {
-					hoursArray[i] = parseInt(hours);
-				}
-				hoursUsed += hoursArray[i];
-			}
+			// get used hours
+			hours01 = parseInt(document.getElementById('hours01').value);
+			hours02 = parseInt(document.getElementById('hours02').value);
+
+			// combine input hours
+			hoursUsed = hours01 + hours02;
 
 			// set hours available
-			hoursAvailable -= hoursUsed;
+			hoursAvailable = hoursAvailable - hoursUsed;
 			document.getElementById("hoursAvailable").textContent = hoursAvailable;
-
-			// alert for negative amount hours available
-			if (hoursAvailable < 0) {
-				alert("Bitte weniger Stunden verwenden!");
-			}
-
 		}
 	</script>
-
-
 </body>
 </html>
