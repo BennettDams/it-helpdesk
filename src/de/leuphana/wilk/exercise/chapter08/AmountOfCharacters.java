@@ -3,9 +3,6 @@ package de.leuphana.wilk.exercise.chapter08;
 import de.leuphana.wilk.exercise.In;
 import de.leuphana.wilk.exercise.Out;
 
-//H. Moessenboeck: Sprechen Sie Java? -- Kapitel 8, Aufgabe 5
-//"Haeufigkeit von Zeichen"
-
 public class AmountOfCharacters {
 	static int[] freq = new int[128]; // initially 0
 

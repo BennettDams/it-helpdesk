@@ -39,13 +39,13 @@ public class ConvertFloatToString {
 	}
 
 	public static void main(String args[]) {
-		Out.print("Geben Sie eine Gleitkommazahl ein (Ende = StrgC): ");
+		Out.print("Enter a float number (end = CTRL + C): ");
 
 		float x = In.readFloat();
 
 		while (In.done()) {
 			Out.println(convert(x, 2));
-			Out.print("Geben Sie eine Gleitkommazahl ein (Ende = StrgC): ");
+			Out.print("Enter a float number (end = CTRL + C): ");
 			x = In.readFloat();
 		}
 
